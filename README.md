@@ -1,5 +1,3 @@
-# ESP32 Relay 4 Channel RS485
-
 ![image-20251011202619901](./assets/image-20251011202619901.png)
 
 | Pin    | Function  |
@@ -444,6 +442,26 @@ void printMenuToSource(String source) {
   sendToSource(menu, source);
 }
 ```
+
+## Pemecahan Masalah
+
+### A. Port Com tidak dapat dikenali di Arduino
+
+Masuk ke mode unduh:
+
+- Tekan dan tahan tombol Boot/0
+
+- Klik(tekan dan lepas) tombol reset/EN sambil tetap tekan tombol Boot .
+
+- Lepas tombol boot
+
+- Setelah selesai Wajib klik tombol **reset** sekali lagi untuk berpindah dari mode download menjadi mode run
+
+### B. Program tidak dapat berjalan setelah diunggah
+
+Setelah upload berhasil, Anda perlu menekan tombol Reset sebelum dapat dijalankan.
+
+
 
 ## Referensi
 
