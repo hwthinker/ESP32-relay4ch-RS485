@@ -88,7 +88,7 @@
 
   
 
-contoh kode program
+Contoh kode program
 
 ```c++
 const int RELAY1 = 23;
@@ -161,6 +161,9 @@ void setup() {
   // Matikan LED awal (HIGH = OFF - AKTIF LOW)
   digitalWrite(LED, HIGH);
   
+  // RUNNING RELAY TEST DI AWAL
+  runningRelayTest();
+  
   // Kirim info ke semua serial
   broadcastMessage("ESP32 Interface Testing Started - ALL ACTIVE LOW");
   broadcastMessage("Serial USB: 9600 bps");
@@ -188,6 +191,64 @@ void loop() {
   monitorInputs();
   
   delay(10);
+}
+
+// FUNGSI RUNNING RELAY TEST
+void runningRelayTest() {
+  broadcastMessage("=== RUNNING RELAY TEST ===");
+  delay(1000);
+
+  // All ON kemudian OFF
+  broadcastMessage("All Relay ON...");
+  digitalWrite(RELAY1, LOW);
+  digitalWrite(RELAY2, LOW);
+  digitalWrite(RELAY3, LOW);
+  digitalWrite(RELAY4, LOW);
+  delay(500);
+  
+  broadcastMessage("All Relay OFF...");
+  digitalWrite(RELAY1, HIGH);
+  digitalWrite(RELAY2, HIGH);
+  digitalWrite(RELAY3, HIGH);
+  digitalWrite(RELAY4, HIGH);
+  delay(500);
+  
+    // All ON kemudian OFF
+  broadcastMessage("All Relay ON...");
+  digitalWrite(RELAY1, LOW);
+  digitalWrite(RELAY2, LOW);
+  digitalWrite(RELAY3, LOW);
+  digitalWrite(RELAY4, LOW);
+  delay(500);
+  
+  broadcastMessage("All Relay OFF...");
+  digitalWrite(RELAY1, HIGH);
+  digitalWrite(RELAY2, HIGH);
+  digitalWrite(RELAY3, HIGH);
+  digitalWrite(RELAY4, HIGH);
+  delay(500);
+
+broadcastMessage("Combined Running Effect 3x...");
+  for(int cycle = 0; cycle < 2; cycle++) {
+    // Kiri -> Kanan
+    digitalWrite(RELAY1, LOW); delay(300); digitalWrite(RELAY1, HIGH);
+    digitalWrite(RELAY2, LOW); delay(300); digitalWrite(RELAY2, HIGH);
+    digitalWrite(RELAY3, LOW); delay(300); digitalWrite(RELAY3, HIGH);
+    digitalWrite(RELAY4, LOW); delay(300); digitalWrite(RELAY4, HIGH);
+    
+    // Kanan -> Kiri  
+    digitalWrite(RELAY4, LOW); delay(300); digitalWrite(RELAY4, HIGH);
+    digitalWrite(RELAY3, LOW); delay(300); digitalWrite(RELAY3, HIGH);
+    digitalWrite(RELAY2, LOW); delay(300); digitalWrite(RELAY2, HIGH);
+    digitalWrite(RELAY1, LOW); delay(300); digitalWrite(RELAY1, HIGH);
+  }
+
+  // Update state variable
+  relay1State = false;
+  relay2State = false;
+  relay3State = false;
+  relay4State = false;
+  broadcastMessage("=== RUNNING RELAY TEST SELESAI ===");
 }
 
 void handleSerialCommand(String command, String source) {
@@ -225,6 +286,10 @@ void handleSerialCommand(String command, String source) {
   }
   else if (command == "l" || command == "L") {
     testLED(source);
+  }
+  else if (command == "t" || command == "T") {
+    // Perintah untuk running test manual
+    runningRelayTest();
   }
   else if (command == "info") {
     sendToSource("Source: " + source, source);
@@ -410,6 +475,7 @@ void printMenu() {
   broadcastMessage("S - Baca Status Semua Input");
   broadcastMessage("R - Baca Status Semua Relay");
   broadcastMessage("L - Test LED (GPIO15)");
+  broadcastMessage("T - Running Relay Test");
   broadcastMessage("M - Tampilkan Menu ini");
   broadcastMessage("INFO - Tampilkan source connection");
   broadcastMessage("==============================");
@@ -435,6 +501,7 @@ void printMenuToSource(String source) {
   menu += "S - Baca Status Semua Input\n";
   menu += "R - Baca Status Semua Relay\n";
   menu += "L - Test LED (GPIO15)\n";
+  menu += "T - Running Relay Test\n";
   menu += "M - Tampilkan Menu ini\n";
   menu += "INFO - Tampilkan source connection\n";
   menu += "==============================";
