@@ -532,5 +532,6 @@ Setelah upload berhasil, Anda perlu menekan tombol Reset sebelum dapat dijalanka
 
 ## Referensi
 
-- https://devices.esphome.io/devices/ESP32_Relay_X4_Modbus_v1.3#product-description
-- 
+- https://devices.esphome.io/devices/ESP32_Relay_X4_Modbus_v1.3
+
+  
