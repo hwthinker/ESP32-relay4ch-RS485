@@ -1,3 +1,19 @@
+<!-- hwthinker-store-links -->
+
+## Beli boardnya & tutorial lengkap
+
+**Board yang dipakai di repo ini tersedia di HwThinker Store:**
+
+- [ESP32 Relay 4 Channel Type-C  RS485 Kontrol Canggih via Wi-Fi Bluetooth…](https://hwthinker.com/produk/d1c08b0b-47af-41b3-b95c-d6f8ebfa9f1d)
+
+**Tutorial lengkap — langkah bergambar, troubleshooting, dan kode yang sudah diuji:**
+
+- [Modul ESP32 Relay 4 Channel RS485 / ModBUS — Setup Arduino IDE, Digital Input & Serial…](https://hwthinker.com/tutorials/esp32-relay-4ch-rs485)
+
+Butuh bantuan pemasangan? Sapa kami lewat live chat di [hwthinker.com](https://hwthinker.com) — barang dikirim dari Surabaya, sudah diuji sebelum dikemas.
+
+<!-- /hwthinker-store-links -->
+
 ![image-20251011202619901](./assets/image-20251011202619901.png)
 
 | Pin    | Function  |
